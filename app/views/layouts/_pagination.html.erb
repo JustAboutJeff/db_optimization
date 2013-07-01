@@ -1,0 +1,9 @@
+<ul>
+  <% if active_page > 1 %>
+  <li><a href="/?page=<%=active_page-1%>">«</a></li>
+  <% end %>
+  <li class="active"><a href="/?page=<%=active_page%>"><%= active_page %></a></li>
+  <% unless active_page == last_page %>
+  <li><a href="/?page=<%=active_page+1%>">»</a></li>
+  <% end %>
+</ul>

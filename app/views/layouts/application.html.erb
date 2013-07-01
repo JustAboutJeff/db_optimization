@@ -22,5 +22,8 @@
   <div class="container">
     <%= yield %>
   </div>
+  <div class="pagination pagination-large">
+    <%= render partial: '/layouts/pagination', locals: { :active_page => @active_page, last_page: @last_page } %>
+  </div>
 </body>
 </html>
