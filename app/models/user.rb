@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
             :format => {:with => /^[\w+\-.]+@[a-z\d\-.]+\.[a-z]+$/i},
             :uniqueness => {:case_sensitive => false}
 
+  scope :page, lambda { |page_num, offset_num| offset(offset_num*(page_num-1)).limit(offset_num) }
+
   def update_karma_count(value)
     self.karma_count += value
   end
@@ -32,4 +34,9 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  # def self.page(page_num)
+  #   number_per_page = 20
+  #   offset(number_per_page*(page_num-1)).limit(number_per_page)
+  # end
 end
